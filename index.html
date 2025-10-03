@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Teacher AI Training Toolkit</title>
+  <meta name="description" content="Curated online courses, toolkits, and resource libraries to equip teachers with practical AI skills." />
+  <style>
+    :root{
+      --bg:#0f172a; /* slate-900 */
+      --panel:#111827EE; /* gray-900 */
+      --text:#e5e7eb; /* gray-200 */
+      --muted:#94a3b8; /* slate-400 */
+      --accent:#22d3ee; /* cyan-400 */
+      --accent-2:#38bdf8; /* sky-400 */
+      --card:#111827;
+      --chip:#1f2937;
+      --border:#334155;
+    }
+    html,body{margin:0;height:100%;background:linear-gradient(180deg,#0b1022 0%, #0f172a 40%, #0b1022 100%);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif;}
+    .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 56px;}
+    header{position:sticky;top:0;background:linear-gradient(180deg,#0b1022 0%, #0f172a 85%, rgba(15,23,42,0) 100%);backdrop-filter:saturate(140%) blur(6px);z-index:10;border-bottom:1px solid transparent}
+    .nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:12px;align-items:center}
+    .brand .logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:radial-gradient(circle at 30% 20%, var(--accent), var(--accent-2));box-shadow:0 10px 24px #0891b2aa, inset 0 0 28px #a5f3fc33}
+    .brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.3px}
+    .search{display:flex;gap:10px;align-items:center;flex:1;max-width:520px;margin-left:auto}
+    .search input{flex:1;background:var(--chip);border:1px solid var(--border);color:var(--text);padding:11px 12px;border-radius:12px;outline:none}
+    .search kbd{background:var(--panel);border:1px solid var(--border);padding:3px 7px;border-radius:6px;color:var(--muted);font-size:12px}
+    .hero{margin-top:14px;border:1px solid var(--border);border-radius:18px;padding:22px;background:linear-gradient(180deg,#0b1226 0%, #0d162e 100%)}
+    .hero h2{margin:.2rem 0 0;font-size:28px}
+    .hero p{color:var(--muted);margin:.4rem 0 0;max-width:72ch}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .chip{border:1px solid var(--border);background:var(--chip);padding:6px 10px;border-radius:999px;font-size:12px;color:#cbd5e1}
+
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:22px}
+    .card{grid-column:span 12;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+    @media(min-width:760px){.card.half{grid-column:span 6}}
+    .card h3{margin:.2rem 0 8px;font-size:18px}
+    .card p{color:var(--muted)}
+    .kicker{letter-spacing:.12em;text-transform:uppercase;color:#a5b4fc;font-weight:600;font-size:12px}
+    .list{display:grid;gap:12px;margin-top:8px}
+    .item{display:flex;gap:12px;align-items:start;border:1px solid var(--border);padding:12px;border-radius:14px;background:linear-gradient(180deg,#121a32, #0f172a)}
+    .item .tag{font-size:12px;color:#67e8f9;border:1px solid #0ea5b7;padding:2px 8px;border-radius:999px;white-space:nowrap}
+    .item a{color:#93c5fd;text-decoration:none}
+    .item a:hover{text-decoration:underline}
+    .caps{font-size:11px;letter-spacing:.12em;color:#94a3b8;text-transform:uppercase}
+    .footer{margin-top:42px;color:var(--muted);font-size:13px}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:var(--chip)}
+    .inline{display:flex;gap:8px;flex-wrap:wrap}
+    .sr{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">📚</div>
+        <h1>Teacher AI Training Toolkit</h1>
+      </div>
+      <form class="search" role="search" onsubmit="event.preventDefault()">
+        <label class="sr" for="q">Search resources</label>
+        <input id="q" placeholder="Search courses, toolkits, hosts… (e.g., ISTE, Google, ethics)" oninput="filter()" />
+        <kbd>/</kbd>
+      </form>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="inline">
+        <span class="pill"><span class="caps">Audience</span> K‑12 & Higher‑Ed Teachers</span>
+        <span class="pill"><span class="caps">Focus</span> Practical skills • Ethical use • Course integration</span>
+        <span class="pill"><span class="caps">Format</span> Free & Low‑cost, self‑paced and cohort</span>
+      </div>
+      <h2>Curated courses, toolkits, and libraries you can share directly with teachers.</h2>
+      <p>All links point to credible, maintained sources. Use the search above or browse the sections below. Suggested learning paths are included for quick rollout.</p>
+      <div class="chips" aria-label="Quick filters">
+        <button class="chip" onclick="quick('beginner')">Beginner</button>
+        <button class="chip" onclick="quick('intermediate')">Intermediate</button>
+        <button class="chip" onclick="quick('advanced')">Advanced</button>
+        <button class="chip" onclick="quick('ethics')">Ethics</button>
+        <button class="chip" onclick="quick('microsoft')">Microsoft</button>
+        <button class="chip" onclick="quick('google')">Google</button>
+      </div>
+    </section>
+
+    <section class="grid" id="resources">
+      <article class="card half">
+        <div class="kicker">Courses</div>
+        <h3>Self‑paced & cohort courses for educators</h3>
+        <div class="list" id="course-list">
+
+          <div class="item" data-tags="beginner google gemini lesson planning" tabindex="0">
+            <span class="tag">Beginner</span>
+            <div>
+              <strong><a href="https://grow.google/ai-for-educators/" target="_blank" rel="noopener">Generative AI for Educators with Gemini — Google</a></strong>
+              <div class="caps">~2 hours • Free • Hands‑on</div>
+              <p>Quick, practical introduction to generative AI for teachers: prompt basics, time‑savers, personalization, with Gemini & NotebookLM.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="beginner google gemini certification" tabindex="0">
+            <span class="tag">Beginner</span>
+            <div>
+              <strong><a href="https://edu.exceedlms.com/student/path/1721586-generative-ai-for-educators" target="_blank" rel="noopener">Generative AI for Educators (Google for Education LMS)</a></strong>
+              <div class="caps">Self‑paced • Free</div>
+              <p>Google’s LMS pathway for teachers exploring generative AI use cases and classroom scenarios.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="intermediate coursera macquarie ibm foundations ethics" tabindex="0">
+            <span class="tag">Intermediate</span>
+            <div>
+              <strong><a href="https://www.coursera.org/learn/artificial-intelligence-education-for-teachers" target="_blank" rel="noopener">Artificial Intelligence (AI) Education for Teachers — Coursera (Macquarie & IBM)</a></strong>
+              <div class="caps">6 modules • Certificate (paid)</div>
+              <p>Structured foundation: core AI concepts, data fluency, ethics, pedagogy and classroom integration.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="intermediate iste k12 cohort pedagogy" tabindex="0">
+            <span class="tag">Intermediate</span>
+            <div>
+              <strong><a href="https://iste.org/courses/ai-deep-dive-for-educators" target="_blank" rel="noopener">AI Deep Dive for Educators — ISTE</a></strong>
+              <div class="caps">~15 hours • Instructor support</div>
+              <p>Updated successor to ISTE’s AI Explorations, with practical implementation strategies for K‑12 classrooms.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="beginner classroom prompts chatgpt practical aiforeducation" tabindex="0">
+            <span class="tag">Beginner</span>
+            <div>
+              <strong><a href="https://www.aiforeducation.io/ai-course" target="_blank" rel="noopener">AI Course for Educators — AI for Education</a></strong>
+              <div class="caps">~2 hours • Free</div>
+              <p>Hands‑on course focused on practical classroom uses of ChatGPT and responsible use guidance; includes prompt libraries.</p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="card half">
+        <div class="kicker">Toolkits & Guidance</div>
+        <h3>Policy, ethics, implementation guides</h3>
+        <div class="list" id="toolkit-list">
+
+          <div class="item" data-tags="ethics policy k12 governance" tabindex="0">
+            <span class="tag">Toolkit</span>
+            <div>
+              <strong><a href="https://www.teachai.org/toolkit" target="_blank" rel="noopener">TeachAI — AI Guidance for Schools Toolkit</a></strong>
+              <div class="caps">K‑12 • Principles • Sample language</div>
+              <p>Develop system‑level guidance with risks, use cases, templates for staff, parents, and students.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="policy ethics report usdoe highered k12" tabindex="0">
+            <span class="tag">Report</span>
+            <div>
+              <strong><a href="https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf" target="_blank" rel="noopener">U.S. Dept. of Education — Artificial Intelligence & the Future of Teaching and Learning (PDF)</a></strong>
+              <div class="caps">Comprehensive guidance • Case studies</div>
+              <p>Authoritative overview of opportunities, risks, and practical recommendations for AI in education.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="policy ethics summary k12" tabindex="0">
+            <span class="tag">Brief</span>
+            <div>
+              <strong><a href="https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report-core-messages.pdf" target="_blank" rel="noopener">USDOE — AI & Teaching: Core Messages (PDF handout)</a></strong>
+              <div class="caps">4‑page summary</div>
+              <p>Quick reference of the report’s key messages for leadership teams and teacher briefings.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="highered pedagogy mit resources" tabindex="0">
+            <span class="tag">Hub</span>
+            <div>
+              <strong><a href="https://mitsloanedtech.mit.edu/ai/" target="_blank" rel="noopener">MIT Sloan — Teaching with Generative AI Hub</a></strong>
+              <div class="caps">Higher‑ed • Strategies & examples</div>
+              <p>Continuously updated strategies, experiments, and reflective guides for integrating gen‑AI in teaching.</p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kicker">Open Resource Libraries</div>
+        <h3>Downloadables, examples, and prompt banks</h3>
+        <div class="list" id="library-list">
+
+          <div class="item" data-tags="prompting classroom practical downloads" tabindex="0">
+            <span class="tag">Library</span>
+            <div>
+              <strong><a href="https://www.aiforeducation.io/" target="_blank" rel="noopener">AI for Education — Resource Library & Webinars</a></strong>
+              <div class="caps">Guides • Prompt banks • Webinars</div>
+              <p>Curated articles, downloadable resources, and webinar series on practical classroom AI.</p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="policy toolkit k12" tabindex="0">
+            <span class="tag">Policy</span>
+            <div>
+              <strong><a href="https://www.teachai.org/policy-resources" target="_blank" rel="noopener">TeachAI — Policy & Guidance Resources</a></strong>
+              <div class="caps">Comparative examples • Templates</div>
+              <p>Foundational policy ideas, real‑world examples, and downloadable templates for school systems.</p>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kicker">Suggested Learning Paths</div>
+        <h3>Pick a path and share with your staff</h3>
+        <div class="list">
+          <div class="item" data-tags="beginner quickstart" tabindex="0">
+            <span class="tag">Path A</span>
+            <div>
+              <strong>Quick‑Start (4–6 hrs)</strong>
+              <p>
+                1) <a href="https://grow.google/ai-for-educators/" target="_blank" rel="noopener">Google: Generative AI for Educators</a> →
+                2) <a href="https://www.aiforeducation.io/ai-course" target="_blank" rel="noopener">AI for Education: AI Course for Educators</a> →
+                3) Skim <a href="https://www.teachai.org/toolkit" target="_blank" rel="noopener">TeachAI Toolkit</a> (risk & policy) →
+                4) Browse <a href="https://mitsloanedtech.mit.edu/ai/" target="_blank" rel="noopener">MIT Sloan hub</a> for one classroom experiment.
+              </p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="intermediate credential" tabindex="0">
+            <span class="tag">Path B</span>
+            <div>
+              <strong>Credential‑Oriented (15–25 hrs)</strong>
+              <p>
+                1) <a href="https://iste.org/courses/ai-deep-dive-for-educators" target="_blank" rel="noopener">ISTE: AI Deep Dive</a> →
+                2) <a href="https://www.coursera.org/learn/artificial-intelligence-education-for-teachers" target="_blank" rel="noopener">Coursera: AI Education for Teachers</a> →
+                3) Present a mini‑capstone (AI‑enhanced lesson) with references to <a href="https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf" target="_blank" rel="noopener">USDOE AI report</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="item" data-tags="policy leadership" tabindex="0">
+            <span class="tag">Path C</span>
+            <div>
+              <strong>Leadership & Policy (6–10 hrs)</strong>
+              <p>
+                1) Read <a href="https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report.pdf" target="_blank" rel="noopener">USDOE report</a> + <a href="https://www.ed.gov/sites/ed/files/documents/ai-report/ai-report-core-messages.pdf" target="_blank" rel="noopener">Core Messages handout</a> →
+                2) Use <a href="https://www.teachai.org/toolkit" target="_blank" rel="noopener">TeachAI Toolkit</a> to draft school guidance →
+                3) Review implementation ideas from <a href="https://mitsloanedtech.mit.edu/ai/" target="_blank" rel="noopener">MIT Sloan hub</a> and adapt.
+              </p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="kicker">Regional Highlight</div>
+        <h3>Emerging opportunities to watch</h3>
+        <div class="list">
+          <div class="item" data-tags="india swayam teacher training" tabindex="0">
+            <span class="tag">Free</span>
+            <div>
+              <strong><a href="https://timesofindia.indiatimes.com/city/chennai/iit-m-launches-free-ai-course-for-school-teachers/articleshow/123793634.cms" target="_blank" rel="noopener">IIT Madras — Free AI course for school teachers (SWAYAM Plus)</a></strong>
+              <div class="caps">25–45 hours • Optional certification</div>
+              <p>News about a free online course series for educators (AI for Educators + subject‑specific tracks). Check SWAYAM Plus for current enrollment windows.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+    <section class="footer">
+      <p><strong>How to share:</strong> Copy any section into your LMS / staff portal. Encourage cohorts to follow one learning path per term. Revisit links each semester for updates as platforms evolve.</p>
+      <p>Curated for educators seeking credible, working resources. Last updated <span id="today"></span>.</p>
+    </section>
+  </main>
+
+  <script>
+    const q = document.getElementById('q');
+    document.addEventListener('keydown', (e)=>{ if(e.key==='/' && document.activeElement!==q){ e.preventDefault(); q.focus(); }});
+
+    function filter(){
+      const value = q.value.toLowerCase().trim();
+      for(const el of document.querySelectorAll('#resources .item')){
+        const hay = (el.innerText + ' ' + (el.dataset.tags||'')).toLowerCase();
+        el.style.display = hay.includes(value) ? 'flex' : 'none';
+      }
+    }
+    function quick(tag){
+      q.value = tag; filter();
+    }
+    document.getElementById('today').textContent = new Date().toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+  </script>
+</body>
+</html>
